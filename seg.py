@@ -46,16 +46,16 @@ def cleanTree(tree):
 def iterateTree(tree):
   nodeData = nodeAnalyze(tree)
   if nodeData["noOfChilds"] == 0:
-    print "--"
+    print("--")
     processNodeUpwards(tree)
-    print "--"
+    print("--")
   else:
    for child in tree:
      iterateTree(child)
 
 def processNodeUpwards(leafNode):
   nodeData = nodeAnalyze(leafNode)
-  print nodeData
+  print(nodeData)
   if leafNode.getparent() != None:
     processNodeUpwards(leafNode.getparent())
 

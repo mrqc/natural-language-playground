@@ -62,12 +62,12 @@ Hunderte Menschen haben erkannt, dass es sich nicht mehr ausgeht und haben sich 
 def printTree(obj, level):
   for subObj in obj:
     if type(subObj) is nltk.tree.Tree:
-      print " " * (2 * level), subObj.label()
+      print(" " * (2 * level), subObj.label())
       printTree(subObj, level + 1)
     elif type(subObj) == tuple:
-      print " " * (2 * level), subObj
+      print(" " * (2 * level), subObj)
     else:
-      print "Error: no tree representation", subObj
+      print("Error: no tree representation", subObj)
 
 def wordInLeaves(word, leaves):
   for index, leave in enumerate(leaves):
@@ -86,7 +86,7 @@ def getNodePathOfTreeForLeafNode(tree, token):
       if subObj[0] == token[0]:
         attributes = attributes + [subObj[1]]
     else:
-      print "Error: no tree iteration for object", subObj
+      print("Error: no tree iteration for object", subObj)
       quit()
   return attributes
 
@@ -105,7 +105,7 @@ for sentence in sentenceTokens:
   taggedSent = nltk.pos_tag(wordTokens)
   tree = nltk.chunk.ne_chunk(taggedSent)
   #printTree(tree, 1)
-  print "--"
+  print("--")
   index = 0
   while index < len(taggedSent):
     if taggedSent[index][0].lower() in stopWords:
@@ -132,6 +132,6 @@ for sentence in sentenceTokens:
           elif token[1] != ":":
             text = text + token[0] + str(attributeToken(token, tree))
         if text != "":
-          print text
+          print(text)
           pass
   tree.draw()
